@@ -1,0 +1,37 @@
+<configuration>
+    <!-- Console Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- Log file location -->
+        <file>logs/app.log</file>
+
+        <!-- Rolling policy for file rotation -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Pattern for rotated logs -->
+            <fileNamePattern>logs/app-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
+
+            <!-- Max history (keep logs for 7 days) -->
+            <maxHistory>7</maxHistory>
+
+            <!-- Max file size before creating a new file (per day) -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+        <!-- Log format -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger configuration -->
+    <root level="OFF">
+       <appender-ref ref="CONSOLE"/>
+        <!-- <appender-ref ref="ROLLING_FILE"/> -->
+      </root>
+  </configuration>

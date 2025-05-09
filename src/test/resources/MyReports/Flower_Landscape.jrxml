@@ -1,0 +1,206 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Flower_Landscape" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c368610e-5bee-4e75-8f1e-ecda64380534">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="47"/>
+	<property name="ireport.y" value="451"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sakila_sqlite.jrdax"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50.0" bold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18.0" bold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14.0" bold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle mode="Opaque" backcolor="#F0EFEF">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<dataset name="PieChartDataset" uuid="21b70311-b650-4678-a39c-887917366bf0"/>
+	<query language="SQL"><![CDATA[select * from film limit 9]]></query>
+	<field name="film_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="film_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="film_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="title"/>
+		<property name="com.jaspersoft.studio.field.label" value="title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="description"/>
+		<property name="com.jaspersoft.studio.field.label" value="description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="release_year" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="release_year"/>
+		<property name="com.jaspersoft.studio.field.label" value="release_year"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="language_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="language_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="language_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="original_language_id" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.name" value="original_language_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="original_language_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="rental_duration" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="rental_duration"/>
+		<property name="com.jaspersoft.studio.field.label" value="rental_duration"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="rental_rate" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="rental_rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="rental_rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="length" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="length"/>
+		<property name="com.jaspersoft.studio.field.label" value="length"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="replacement_cost" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="replacement_cost"/>
+		<property name="com.jaspersoft.studio.field.label" value="replacement_cost"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="rating" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rating"/>
+		<property name="com.jaspersoft.studio.field.label" value="rating"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="special_features" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="special_features"/>
+		<property name="com.jaspersoft.studio.field.label" value="special_features"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="last_update" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_update"/>
+		<property name="com.jaspersoft.studio.field.label" value="last_update"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<background height="555" splitType="Stretch">
+		<element kind="chart" chartType="pie3D" uuid="8a48de9a-44b8-499e-a7ae-34ceb014e6e7" x="-18" y="406" width="229" height="139" showLegend="false" evaluationTime="Report">
+			<dataset kind="pie">
+				<series>
+					<keyExpression><![CDATA[/* Replace with your key expression here */
+$V{REPORT_COUNT}]]></keyExpression>
+					<valueExpression><![CDATA[new Double(200*Math.random()*5)]]></valueExpression>
+				</series>
+			</dataset>
+			<plot backgroundAlpha="0.5" foregroundAlpha="0.8">
+				<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+				<seriesColor order="0" color="#3399FF"/>
+				<seriesColor order="1" color="#00CCFF"/>
+				<seriesColor order="2" color="#0066CC"/>
+				<seriesColor order="3" color="#6699FF"/>
+				<seriesColor order="4" color="#004A94"/>
+				<seriesColor order="5" color="#00356A"/>
+			</plot>
+		</element>
+		<element kind="image" uuid="20bb2440-c413-4a05-a706-a10d8c847aba" x="-20" y="65" width="229" height="250">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+			<expression><![CDATA["flower1.png"]]></expression>
+		</element>
+		<element kind="image" uuid="5a4947cf-88fa-4c35-83d8-b8d2e9d03edc" x="-20" y="-20" width="229" height="250">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+			<expression><![CDATA["flower1.png"]]></expression>
+		</element>
+		<element kind="staticText" uuid="0f98be0a-3da9-4645-8383-7bd38e4a88b4" mode="Opaque" x="318" y="315" width="239" height="181" backcolor="#FFFFCC" fontSize="12.0">
+			<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+			<text><![CDATA[Each chart is populated on each page.
+The 3 pie charts are currently using an empty datasource and the values are
+generated using a random generator.
+
+This rectangle element is not printed (see the print when expression of this
+element)]]></text>
+			<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
+				<pen lineWidth="1.0" lineColor="#CC9900"/>
+				<topPen lineWidth="1.0" lineColor="#CC9900"/>
+				<leftPen lineWidth="1.0" lineColor="#CC9900"/>
+				<bottomPen lineWidth="1.0" lineColor="#CC9900"/>
+				<rightPen lineWidth="1.0" lineColor="#CC9900"/>
+			</box>
+		</element>
+		<element kind="line" uuid="ebeedd7d-68bc-411e-9f52-5c762b989974" x="201" y="431" width="117" height="1">
+			<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+			<pen lineWidth="3.0" lineStyle="Dotted" lineColor="#996600"/>
+		</element>
+		<element kind="staticText" uuid="f887be05-9083-4f7a-b144-bb6bd4dc2f7b" mode="Opaque" x="275" y="-10" width="240" height="181" backcolor="#FFFFCC" markup="none" fontSize="12.0">
+			<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+			<text><![CDATA[Flowers
+
+There are two flowers, the first one is printed only starting from the second page, the other one only in the first page.]]></text>
+			<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4">
+				<pen lineWidth="1.0" lineColor="#CC9900"/>
+				<topPen lineWidth="1.0" lineColor="#CC9900"/>
+				<leftPen lineWidth="1.0" lineColor="#CC9900"/>
+				<bottomPen lineWidth="1.0" lineColor="#CC9900"/>
+				<rightPen lineWidth="1.0" lineColor="#CC9900"/>
+			</box>
+		</element>
+		<element kind="line" uuid="50033920-6ece-4e33-9058-4e5a2a9855ad" x="72" y="37" width="204" height="1">
+			<printWhenExpression><![CDATA[Boolean.FALSE]]></printWhenExpression>
+			<pen lineWidth="3.0" lineStyle="Dotted" lineColor="#996600"/>
+		</element>
+		<element kind="component" uuid="58769291-1ba8-4b8c-a572-4f8b79d90985" x="2" y="290" width="108" height="116">
+			<component kind="barcode4j:QRCode">
+				<codeExpression><![CDATA["123456789"]]></codeExpression>
+			</component>
+			<property name="com.jaspersoft.studio.element.name" value="http://www.pchouse.pt"/>
+		</element>
+		<element kind="staticText" uuid="2e1b07c0-7c2b-4759-b20b-02be11028d35" x="560" y="410" width="207" height="110">
+			<text><![CDATA[SIGNATURE]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="net.sf.jasperreports.print.part.name" value="SIGNATURE"/>
+			<property name="net.sf.jasperreports.export.pdf.field.name" value="SIGNATURE"/>
+		</element>
+	</background>
+	<title height="130" splitType="Stretch">
+		<element kind="staticText" uuid="0dae0af3-dd1d-4b42-b346-386af21f0689" x="336" y="65" width="449" height="29" fontSize="22.0" bold="false" hTextAlign="Right" style="SubTitle">
+			<text><![CDATA[Titles]]></text>
+		</element>
+		<element kind="frame" uuid="83f5e806-cc04-4161-87a9-07633f604bc1" mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699">
+			<element kind="staticText" uuid="f5cd9ee0-5caa-4e48-8946-c7e84d82a845" x="231" y="0" width="578" height="65" fontSize="54.0" bold="false" hTextAlign="Right" style="Title">
+				<text><![CDATA[Sakila films]]></text>
+			</element>
+		</element>
+	</title>
+	<pageHeader splitType="Stretch"/>
+	<columnHeader height="19" splitType="Stretch">
+		<element kind="frame" uuid="2a3d298d-90eb-4db1-919a-c9b2ed28c222" x="227" y="0" width="575" height="14"/>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<element kind="frame" uuid="822bafe9-34ee-4b4f-aa76-3eae029c4911" x="227" y="0" width="575" height="19">
+				<element kind="textField" uuid="a44ec5a5-19ea-4a42-bc02-10f3ef16e3e0" x="0" y="0" width="190" height="19">
+					<expression><![CDATA[$F{release_year}]]></expression>
+				</element>
+				<element kind="textField" uuid="b4f9c87a-4c45-44b8-a724-e2a0ad41ada8" x="190" y="0" width="372" height="18">
+					<expression><![CDATA[$F{title}]]></expression>
+				</element>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="7" splitType="Stretch">
+		<element kind="line" uuid="c23ffbf7-1928-41f8-ade3-5930d9a4871d" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1">
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</element>
+	</columnFooter>
+	<pageFooter height="16" splitType="Stretch">
+		<element kind="frame" uuid="6f4fe8ef-88ca-4d5d-b46a-054826bb7893" mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699">
+			<element kind="textField" uuid="970781d6-87a0-4d3d-a07b-5ae173a1317a" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" fontName="Arial" fontSize="12.0" evaluationTime="Report" bold="false" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+			</element>
+			<element kind="textField" uuid="42664b34-c87b-42f8-911b-bd9c2ab9111e" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" fontName="Arial" fontSize="12.0" bold="false" hTextAlign="Right" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+			</element>
+			<element kind="textField" uuid="06b3d6e8-b4a5-4251-b1fb-f640689933e8" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" fontName="Arial" fontSize="12.0" pattern="EEEEE dd MMMMM yyyy" bold="false" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA[new java.util.Date()]]></expression>
+			</element>
+		</element>
+	</pageFooter>
+	<summary splitType="Stretch"/>
+</jasperReport>

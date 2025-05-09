@@ -1,0 +1,6 @@
+the keystore example password is "password"
+And is hardcoded in the HttpsConfig file
+
+To generate a new keystore, use the following command as example:
+
+keytool -genkeypair -alias alias -keyalg RSA -keysize 2048 -keystore /path/src/main/resources/keystore-exmaple.p12 -storetype PKCS12 -validity 9999 -storepass password -keypass password -dname "CN=pt.pchouse, OU=reportapi, O=PCHOUSE, L=Lisboa, S=Lisboa, C=PT"
