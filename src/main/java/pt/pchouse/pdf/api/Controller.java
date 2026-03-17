@@ -98,7 +98,7 @@ public class Controller
 
                         if (auth.isNotAuthorized()) {
                             response.setStatus(Response.Status.ERROR);
-                            response.setMessage("Client not authorized");
+                            response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                             response.setDuration(startInstant, System.nanoTime());
                             logger.debug("Client not authorized, respond with http status code 400");
                             return ResponseEntity.status(400).body(response);
@@ -178,7 +178,7 @@ public class Controller
 
                         if (auth.isNotAuthorized()) {
                             response.setStatus(Response.Status.ERROR);
-                            response.setMessage("Client not authorized");
+                            response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                             response.setDuration(startInstant, System.nanoTime());
                             logger.debug("Client not authorized, respond with http status code 400");
                             return ResponseEntity.status(400).body(response);
@@ -236,7 +236,7 @@ public class Controller
 
                         if (auth.isNotAuthorized()) {
                             response.setStatus(Response.Status.ERROR);
-                            response.setMessage("Client not authorized");
+                            response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                             response.setDuration(startInstant, System.nanoTime());
                             logger.debug("Client not authorized to request sign, respond with http status code 400");
                             return ResponseEntity.status(400).body(response);
@@ -312,7 +312,7 @@ public class Controller
 
                         if (auth.isNotAuthorized()) {
                             response.setStatus(Response.Status.ERROR);
-                            response.setMessage("Client not authorized");
+                            response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                             response.setDuration(startInstant, System.nanoTime());
                             logger.debug("Client not authorized to print request, respond with http status code 400");
                             return ResponseEntity.status(400).body(response);
@@ -400,7 +400,7 @@ public class Controller
 
                 if (auth.isNotAuthorized()) {
                     response.setStatus(Response.Status.ERROR);
-                    response.setMessage("Client not authorized");
+                    response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                     response.setDuration(startInstant, System.nanoTime());
                     logger.debug("Client not authorized to send cut and open cash drawer, respond with http status code 400");
                     return ResponseEntity.status(400).body(response);
@@ -474,7 +474,7 @@ public class Controller
 
                 if (auth.isNotAuthorized()) {
                     response.setStatus(Response.Status.ERROR);
-                    response.setMessage("Client not authorized");
+                    response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                     response.setDuration(startInstant, System.nanoTime());
                     logger.debug("Client not authorized to request open cash drawer, respond with http status code 400");
                     return ResponseEntity.status(400).body(response);
@@ -542,7 +542,7 @@ public class Controller
 
                 if (auth.isNotAuthorized()) {
                     response.setStatus(Response.Status.ERROR);
-                    response.setMessage("Client not authorized");
+                    response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                     response.setDuration(startInstant, System.nanoTime());
                     logger.debug("Client not authorized to request cut paper, respond with http status code 400");
                     return ResponseEntity.status(400).body(response);
@@ -613,7 +613,7 @@ public class Controller
 
                 if (auth.isNotAuthorized()) {
                     response.setStatus(Response.Status.ERROR);
-                    response.setMessage("Client not authorized");
+                    response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                     response.setDuration(startInstant, System.nanoTime());
                     logger.debug("Client not authorized to request paper feed, respond with http status code 400");
                     return ResponseEntity.status(400).body(response);
@@ -667,7 +667,7 @@ public class Controller
 
                 if (auth.isNotAuthorized()) {
                     response.setStatus(Response.Status.ERROR);
-                    response.setMessage("Client not authorized");
+                    response.setMessage(String.format("Client not authorized %s", auth.getRemoteIp()));
                     response.setDuration(startInstant, System.nanoTime());
                     logger.debug("Client not authorized to communicate with API");
                     return ResponseEntity.status(400).body(response);

@@ -129,12 +129,14 @@ public class Database implements IDataSource
 
     /**
      * Indicates whether to encrypt the connection.
+     *
      * @since 1.0.0
      */
     private Boolean encrypt = true;
 
     /**
      * Indicates whether to trust the server certificate.
+     *
      * @since 1.0.0
      */
     private Boolean trustServerCertificate = true;
@@ -226,7 +228,7 @@ public class Database implements IDataSource
     /**
      * Sets the port number for the database server.
      *
-     * @param serverPort The port number to be set, or null if default.
+     * @param serverPort The port number to be set, or null if defaulted.
      * @since 1.0.0
      */
     public void setServerPort(Integer serverPort) {
@@ -287,7 +289,6 @@ public class Database implements IDataSource
      * Sets the password for database authentication.
      *
      * @param password The password to be set.
-     *
      * @since 1.0.0
      */
     public void setPassword(String password) {
@@ -296,8 +297,8 @@ public class Database implements IDataSource
 
     /**
      * Indicates whether the connection should be encrypted.
-     * @return True if the connection should be encrypted, false otherwise.
      *
+     * @return True if the connection should be encrypted, false otherwise.
      * @since 1.0.0
      */
     public Boolean getEncrypt() {
@@ -306,8 +307,8 @@ public class Database implements IDataSource
 
     /**
      * Sets whether the connection should be encrypted.
-     * @param encrypt True to encrypt the connection, false otherwise.
      *
+     * @param encrypt True to encrypt the connection, false otherwise.
      * @since 1.0.0
      */
     public void setEncrypt(Boolean encrypt) {
@@ -316,8 +317,8 @@ public class Database implements IDataSource
 
     /**
      * Indicates whether to trust the server certificate.
-     * @return True if the server certificate should be trusted, false otherwise.
      *
+     * @return True if the server certificate should be trusted, false otherwise.
      * @since 1.0.0
      */
     public Boolean getTrustServerCertificate() {
@@ -326,8 +327,8 @@ public class Database implements IDataSource
 
     /**
      * Sets whether to trust the server certificate.
-     * @param trustServerCertificate True to trust the server certificate, false otherwise.
      *
+     * @param trustServerCertificate True to trust the server certificate, false otherwise.
      * @since 1.0.0
      */
     public void setTrustServerCertificate(Boolean trustServerCertificate) {
@@ -355,6 +356,34 @@ public class Database implements IDataSource
             }
         } else if (StringUtils.isBlank(serverAddress) || StringUtils.isBlank(databaseSchema)) {
             throw new IllegalStateException("Provider, server address, and database schema must be set.");
+        }
+
+        var className = switch (provider) {
+            case SQLSERVER -> "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            case ORACLE -> "oracle.jdbc.OracleDriver";
+            case MYSQL, MARIADB -> "com.mysql.cj.jdbc.Driver";
+            case POSTGRESQL -> "org.postgresql.Driver";
+            case H2 -> "org.h2.Driver";
+            case DB2 -> "com.ibm.db2.jcc.DB2Driver";
+            case DERBY -> "org.apache.derby.jdbc.ClientDriver";
+            case HSQLDB -> "org.hsqldb.jdbc.JDBCDriver";
+            case SQLITE -> "org.sqlite.JDBC";
+            case INFORMIX -> "com.informix.jdbc.IfxDriver";
+            default -> null;
+        };
+
+        if (className != null) {
+            try {
+
+                System.out.println("Starting to load JDBC driver for provider: " + provider + " with class name: " + className);
+                Class.forName(className);
+                System.out.println("End of loading " + className);
+
+            } catch (Exception e) {
+                System.out.println("Error loading " + className + " => " + e.getMessage());
+                logger.error("SQL Server JDBC Driver not found. Please ensure it is included in the classpath.", e);
+                throw new IllegalStateException("SQL Server JDBC Driver not found. Please ensure it is included in the classpath.", e);
+            }
         }
 
         return switch (provider) {
